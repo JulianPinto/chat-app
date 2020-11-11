@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Join = () => {
     const [name, setName] = useState('');
-    const [room, setRoom] = setState('');
+    const [room, setRoom] = useState('');
 
     return (
         <div className="outerContainer">
@@ -15,7 +15,7 @@ const Join = () => {
                 <div>
                     <input placeholder="" className="joinInput" type="text" onChange={(event) => setRoom(event.target.value)}></input>
                 </div>
-                <Link onClick={event => (!name || !room) ? event.preventDefault() : null} to={'./chat?name=${name}&room=${room}'}>
+                <Link onClick={event => (!name || !room) ? event.preventDefault() : null} to={`./chat?name=${name}&room=${room}`}>
                     <button className="button" type="submit">Sign In</button>
                 </Link>
             </div>
