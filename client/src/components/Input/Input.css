@@ -1,0 +1,19 @@
+.form {
+    display: flex;
+    border-top: 4px solid black;
+}
+
+.input {
+    padding: 5px;
+    width: 80%;
+    font-size: medium;
+}
+
+.sendMessage {
+    color: grey;
+    text-transform: uppercase;
+    background: lightskyblue;
+    padding: 10px;
+    display: inline-block;
+    width: 20%;
+}

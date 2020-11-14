@@ -1,0 +1,80 @@
+.messageContainer {
+    display: flex;
+    justify-content: flex-start;
+    padding: 0, 5%;
+    margin-top: 5px;
+}
+
+.messageBox {
+    background: grey;
+    border-radius: 10px;
+    padding: 5px, 15px;
+    color: white;
+    display: inline-block;
+    max-width: 80%;
+}
+
+.messageText {
+    width: 100%;
+    letter-spacing: 0;
+    color: #353535;
+    float: left;
+    font-size: medium;
+    word-wrap: normal;
+}
+
+.sentText {
+    display: flex;
+    max-width: 20%;
+    align-items: center;
+    font-size: small;
+    letter-spacing: 0.3px;
+    padding-left: 10px;
+    word-wrap: initial;
+}
+
+.timestamp {
+    display: flex;
+    align-items: center;
+    font-size: small;
+    letter-spacing: 0.3px;
+    padding-left: 10px;
+    font-size: small;
+}
+
+
+
+.messageContainerCurrent {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0, 5%;
+    margin-top: 5px;
+}
+
+.messageBoxCurrent {
+    background: blue;
+    border-radius: 10px;
+    padding: 5px, 15px;
+    color: white;
+    display: inline-block;
+    max-width: 80%;
+}
+
+.messageTextCurrent {
+    width: 100%;
+    letter-spacing: 0;
+    color: white;
+    float: left;
+    font-size: medium;
+    word-wrap: normal;
+}
+
+.sentTextCurrent {
+    display: flex;
+    max-width: 20%;
+    align-items: center;
+    font-size: small;
+    letter-spacing: 0.3px;
+    padding-right: 10px;
+    word-wrap: initial;
+}

@@ -1,16 +1,18 @@
 import React from 'react';
 import ReactEmoji from 'react-emoji';
 
+import './Message.css';
+
 const Message = ({ message: { user, text, timeStamp }, name }) => {
     const trimmedName = name.trim().toLowerCase();
     if(user === trimmedName) {
         return (
             <div className='messageContainerCurrent'>
-                <p className="timeStamp">{timeStamp}</p>
-                <p className='sentTextCurrent'>{trimmedName}</p>
                 <div className='messageBoxCurrent'>
                     <p className='messageTextCurrent'>{ReactEmoji.emojify(text)}</p>
                 </div>
+                <p className='sentTextCurrent'>{trimmedName}</p>
+                <p className="timeStamp">{timeStamp}</p>
             </div>
         )
     }

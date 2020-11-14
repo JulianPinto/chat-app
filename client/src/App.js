@@ -5,6 +5,8 @@ import Input from './components/Input/Input.js';
 import Messages from './components/Messages/Messages';
 import Users from './components/Users/Users';
 
+import './App.css';
+
 let socket;
 
 const App = () => {
