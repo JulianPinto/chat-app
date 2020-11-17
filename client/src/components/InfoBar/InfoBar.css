@@ -1,24 +1,6 @@
 .infoBar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: lightskyblue;
     border-radius: 5px;
+    border: 1px solid black;
     height: 50px;
     width: 100%;
-}
-
-.leftInnerContainer {
-    display: flex;
-    flex: 0.5;
-    align-items: center;
-    margin: 5px;
-    color: white;
-}
-
-.rightInnerContainer {
-    display: flex;
-    flex: 0.5;
-    justify-content: flex-end;
-    margin: 5px;
 }

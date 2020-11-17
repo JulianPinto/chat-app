@@ -1,10 +1,10 @@
 import React from 'react';
 
-const User = ({ name, color }) => {
+const User = ({ name }) => {
     const trimmedName = name.trim().toLowerCase();
 
     return (
-            <div className='serContainer' color={color}>
+            <div className='serContainer'>
                 <p className='userName'>{trimmedName}</p>
             </div>
         )

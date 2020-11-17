@@ -40,8 +40,9 @@ const App = () => {
         });
 
         socket.on('messageHistory', ({ messageHistory }) => {
+            console.log(messages);
             setMessages(messageHistory);
-        });
+        }, [messages]);
 
         return () => {
             socket.emit('disconnect user');
@@ -53,13 +54,13 @@ const App = () => {
         socket.on('userData', ({ users }) => {
             setUsers(users);
         });
-    }, [users]);
+    }, []);
 
     useEffect(() => { 
         socket.on('message', (message) => {
             setMessages([...messages, message]);
-        }, []);
-    })
+        });
+    }, [messages, color])
 
     const sendMessage = (event) => {
         event.preventDefault();
@@ -71,11 +72,12 @@ const App = () => {
                     sessionStorage.setItem("name", newName);
                 }
 
-            } else if (message.startsWith("/color " && message.length === 13)) {
+            } else if (message.startsWith("/color ") && message.length === 13 ) {
                 const newColor = message.slice(7);
-                if(newColor.lenth === 6 && /^[0-9A-F]{6}$/i.test(newColor)) {
+                if(/^[0-9A-F]{6}$/i.test(newColor)) {
                     setColor(newColor);
                     sessionStorage.setItem("color", newColor);
+                    return;
                 }
             }
             socket.emit('sendMessage', message, () => setMessage(''));
@@ -85,11 +87,11 @@ const App = () => {
     return (
         <div className='outerContainer'>
             <div className='container'>
-                <InfoBar name={name}></InfoBar>
-                <Messages messages={messages} name={name}></Messages>
+                <InfoBar name={name} color={color}></InfoBar>
+                <Messages messages={messages} name={name} color={color}></Messages>
                 <Input message={message} setMessage={setMessage} sendMessage={sendMessage}></Input>
             </div>
-            <Users users={users}></Users>
+            <Users className='userContainer' users={users} color={color}></Users>
         </div>
     )
 }

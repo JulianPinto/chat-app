@@ -2,14 +2,9 @@ import React from 'react';
 
 import './InfoBar.css';
 
-const InfoBar = ({ name }) => (
-    <div className='infoBar'>
-        <div className='leftInnerContainer'>
-            <h3>{name}</h3>
-        </div>
-        <div className='rightInnerContainer'>
-        
-        </div>
+const InfoBar = ({ name, color }) => (
+    <div className='infoBar' style={{backgroundColor: '#' + color}}>
+        <h3>{name}</h3>
     </div>
 )
 

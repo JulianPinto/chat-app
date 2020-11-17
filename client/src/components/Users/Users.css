@@ -1,9 +1,11 @@
-.users {
-    margin: auto;
-    padding: 5%;
-    height: 100vh;
-    max-width: 30%;
-    overflow: auto;
-    flex:auto;
-    background: blue;
+.usersContainer {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 90vh;
+    overflow: hidden;
+    padding: 5px;
+    margin-left: 5px;
+    border: 1px solid black;
 }

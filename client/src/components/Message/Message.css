@@ -1,80 +1,51 @@
 .messageContainer {
     display: flex;
-    justify-content: flex-start;
-    padding: 0, 5%;
-    margin-top: 5px;
+    flex-direction: column;
+    padding: 10px;
 }
 
 .messageBox {
-    background: grey;
-    border-radius: 10px;
-    padding: 5px, 15px;
-    color: white;
-    display: inline-block;
-    max-width: 80%;
-}
-
-.messageText {
-    width: 100%;
-    letter-spacing: 0;
-    color: #353535;
-    float: left;
-    font-size: medium;
-    word-wrap: normal;
+    position: relative;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: grey;
+    max-width: 70%;
+    text-align: left;
+    border: 1px solid black;
+    border-radius: 5px;
 }
 
 .sentText {
-    display: flex;
-    max-width: 20%;
-    align-items: center;
-    font-size: small;
-    letter-spacing: 0.3px;
-    padding-left: 10px;
-    word-wrap: initial;
+    position: absolute;
+    font-size: .70em;
+    font-weight: 300;
+    top: -5px;
 }
 
 .timestamp {
-    display: flex;
-    align-items: center;
-    font-size: small;
-    letter-spacing: 0.3px;
-    padding-left: 10px;
-    font-size: small;
-}
-
-
-
-.messageContainerCurrent {
-    display: flex;
-    justify-content: flex-end;
-    padding: 0, 5%;
-    margin-top: 5px;
+    position: absolute;
+    font-size: .70em;
+    font-weight: 300;
+    bottom: 5px;
+    left: 5px;
 }
 
 .messageBoxCurrent {
-    background: blue;
-    border-radius: 10px;
-    padding: 5px, 15px;
-    color: white;
-    display: inline-block;
-    max-width: 80%;
+    position: relative;
+    margin-bottom: 10px;
+    margin-right: 20px;
+    padding: 10px;
+    max-width: 70%;
+    text-align: left;
+    border: 1px solid black;
+    border-radius: 5px;
 }
 
-.messageTextCurrent {
-    width: 100%;
-    letter-spacing: 0;
-    color: white;
-    float: left;
-    font-size: medium;
-    word-wrap: normal;
-}
-
-.sentTextCurrent {
-    display: flex;
-    max-width: 20%;
-    align-items: center;
-    font-size: small;
-    letter-spacing: 0.3px;
-    padding-right: 10px;
-    word-wrap: initial;
+.timestampCurrent {
+    position: absolute;
+    font-size: .70em;
+    font-weight: 300;
+    bottom: 5px;
+    right: 5px;
 }

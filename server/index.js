@@ -11,10 +11,6 @@ const PORT = process.env.PORT || 8000;
 let messageHistory = [];
 let users = [];
 
-const validColor = (color) => {
-    return (color.lenth === 6 && /^[0-9A-F]{6}$/i.test(color));
-}
-
 
 io.on('connection', (socket) => {
     console.log('new connection ' + socket.id);
@@ -38,10 +34,10 @@ io.on('connection', (socket) => {
 
         io.to(0).emit('userData', { users });
         callback();
-    }, []);
+    });
 
     socket.on('sendMessage', (message, callback) => {
-        const{ user } = getUser(socket.id);
+        const { user }  = getUser(socket.id);
         if(!(message[0] === '/')) {
             const date = new Date();
             const timeStamp = date.getHours() + ":" + date.getMinutes();
@@ -52,32 +48,31 @@ io.on('connection', (socket) => {
 
         } else if ((message.startsWith("/name ") && (message.length > 6))) {
             const newName = message.slice(6);
-            if(changeName(newName)) {
-                io.emit('userData', { users });
-            }
-
-        } else if (message.startsWith("/color " && message.length === 13)) {
-            const newColor = message.slice(7);
-            if(validColor(newColor)) {
-                changeColor(socket.id, newColor);
+            const oldName = user.name;
+            if(changeName(socket.id, newName)) {
+                for(i = 0; i < messageHistory.length; i++) {
+                    if(messageHistory[i].user === oldName) {
+                        messageHistory[i].user = newName;
+                    }
+                }
+                io.emit('messageHistory', { messageHistory });
                 io.emit('userData', { users });
             }
         }
         callback();
-    }, []);
+    });
 
     socket.on('disconnect user', () => {
-        console.log("disconnecting user");
         const user = removeUser(socket.id);
         if(user) {
             io.emit('message', {user: 'admin', text: `${user.name} has left.`});
             io.to(0).emit('userData', { users });
         }
-    }, []);
+    });
 });
 
 const addUser = ({ id, name, color }) => {
-    if(name === null) {
+    if(!name) {
         name = "user-" + id;
     }
     name = name.trim().toLowerCase();
@@ -88,7 +83,7 @@ const addUser = ({ id, name, color }) => {
         return { error: 'Username is taken'};
     }
 
-    if(color === null) {
+    if(!color) {
         color = Math.floor(Math.random()*16777215).toString(16);
     }
     let user = { id, name, color, room: 0 };
@@ -110,18 +105,23 @@ const getUser = (id) => {
     return { user: users.find((user) => user.id === id) };
 }
 
+const validColor = (color) => {
+    return (color.lenth === 6 && /^[0-9A-F]{6}$/i.test(color));
+}
+
 const changeColor = ( id, color ) => {
     const userIndex = users.findIndex((u) => u.id === id);
     if(userIndex !== -1) {
-        user[userIndex].color = color;
+        users[userIndex].color = color;
         return true;
     }
     return false;
 }
 
-const changeName = ( name ) => {
-    const userIndex = users.findIndex((user) => user.name === name);
-    if(userIndex !== -1) {
+const changeName = ( id, name ) => {
+    const userIndex = users.findIndex((user) => user.id === id);
+    const nameTaken = users.find((u) => u.name === name);
+    if(nameTaken !== -1) {
         users[userIndex].name = name;
         return true;
     }
