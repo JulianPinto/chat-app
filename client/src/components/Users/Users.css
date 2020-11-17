@@ -4,6 +4,8 @@
     flex-direction: column;
     align-items: flex-start;
     height: 90vh;
+    width: 25%;
+    max-width: 25%;
     overflow: hidden;
     padding: 5px;
     margin-left: 5px;
